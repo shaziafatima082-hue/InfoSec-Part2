@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Profile</title><style>body { font-family: Arial; padding: 20px; }</style></head>
+<body>
+    <h2>Update Profile</h2>
+    <a href="/dashboard">Back to Dashboard</a><br><br>
+    <p>Current User: <%= user.username %></p>
+    <form action="/update-profile" method="POST">
+        <!-- FIXED: CSRF Token Added -->
+        <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+        <label>New Email:</label><br>
+        <input type="email" name="email" required style="width: 300px; padding: 5px;"><br><br>
+        <button type="submit">Update Email</button>
+    </form>
+</body>
+</html>

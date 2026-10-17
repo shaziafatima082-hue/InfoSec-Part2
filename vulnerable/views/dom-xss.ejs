@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>DOM XSS</title><style>body { font-family: Arial; padding: 20px; }</style></head>
+<body>
+    <h2>DOM-Based XSS Demo</h2>
+    <a href="/dashboard">Back to Dashboard</a><br><br>
+    <p>Click the button below to trigger the DOM-based XSS vulnerability.</p>
+    <button onclick="triggerXSS()" style="padding: 10px; background: #5c6bc0; color: white; border: none; border-radius: 4px; cursor: pointer;">Trigger DOM XSS</button>
+    <div id="output" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;"></div>
+    
+    <script>
+        function triggerXSS() {
+            // VULNERABLE: Using eval on a string (as allowed by assignment)
+            var maliciousInput = "alert('DOM XSS Triggered!')";
+            document.getElementById('output').innerHTML = "Executing: " + maliciousInput;
+            eval(maliciousInput);
+        }
+    </script>
+</body>
+</html>

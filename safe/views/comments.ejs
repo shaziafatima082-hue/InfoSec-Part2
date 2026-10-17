@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Comments</title><style>body { font-family: Arial; padding: 20px; }</style></head>
+<body>
+    <h2>Comments Section</h2>
+    <a href="/dashboard">Back to Dashboard</a><br><br>
+    <form action="/comments" method="POST">
+        <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+        <input type="text" name="content" placeholder="Write a comment..." required style="width: 300px; padding: 5px;">
+        <button type="submit">Post Comment</button>
+    </form>
+    <hr>
+    <h3>All Comments:</h3>
+    <% comments.forEach(function(c) { %>
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+            <b><%= c.username %>:</b> <%= c.content %>
+        </div>
+    <% }); %>
+</body>
+</html>
